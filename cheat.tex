@@ -1,0 +1,428 @@
+\documentclass[10pt,landscape]{article}
+
+\newcommand{\beqs}[0]{\begin{equation*}}
+\newcommand{\eeqs}[0]{\end{equation*}}
+\newcommand{\paren}[1]{\left( #1 \right)}
+\newcommand{\qqquad}[0]{\quad\qquad}
+\newcommand{\qqqquad}[0]{\qquad\qquad}
+
+\newcommand{\D}[2]{\frac{\partial #2}{\partial #1}}
+\newcommand{\E}[1]{\cdot 10 ^ {#1}}
+\newcommand{\grad}[0]{\vec\bigtriangledown}
+\newcommand{\cross}[0]{\times}
+\newcommand{\curl}[1]{\grad\cross\vec{#1}}
+
+\newcommand{\tritium}[0]{^ 3 _ 1 \mathrm{H}}
+\newcommand{\units}[1]{\left[ \mathrm{#1} \right]}
+
+\addtolength{\oddsidemargin}{-0.875in}
+\addtolength{\evensidemargin}{-0.875in}
+\addtolength{\textwidth}{1.75in}
+\addtolength{\topmargin}{-0.875in}
+\addtolength{\textheight}{1.75in}
+
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{ifthen}
+\usepackage{multicol}
+\usepackage[landscape]{geometry}
+
+% This sets page margins to .5 inch if using letter paper, and to 1cm
+% if using A4 paper. (This probably isn't strictly necessary.)
+% If using another size paper, use default 1cm margins.
+\ifthenelse{\lengthtest { \paperwidth = 11in}}
+  { \geometry{top=.5in,left=.5in,right=.5in,bottom=.5in} }
+    {\ifthenelse{ \lengthtest{ \paperwidth = 297mm}}
+      {\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+      {\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+}
+
+% Turn off header and footer
+\pagestyle{empty}
+
+% Redefine section commands to use less space
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%x
+                                {\normalfont\large\bfseries}}
+\renewcommand{\subsection}{\@startsection{subsection}{2}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%
+                                {\normalfont\normalsize\bfseries}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {1ex plus .2ex}%
+                                {\normalfont\small\bfseries}}
+\makeatother
+
+% Don't print section numbers
+\setcounter{secnumdepth}{0}
+
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt plus 0.5ex}
+
+\begin{document}
+
+\raggedright
+\footnotesize
+\begin{multicols}{3}
+
+% multicol parameters
+% These lengths are set only within the two main columns
+%\setlength{\columnseprule}{0.25pt}
+\setlength{\premulticols}{1pt}
+\setlength{\postmulticols}{1pt}
+\setlength{\multicolsep}{1pt}
+\setlength{\columnsep}{2pt}
+
+% Title
+\begin{center} \Large{\textbf{NE 180 Exam CheatSheet}} \\ \end{center}
+
+% Content
+\subsection{Mathematics}
+Curl (Gradient Cross Product)
+\beqs
+  \curl{B}
+  =
+  \begin{vmatrix}
+    i & j & k\\
+    \grad_x & \grad_y & \grad_z\\
+    F_x & F_y & F_z
+  \end{vmatrix}
+  =
+  \begin{vmatrix}
+    i & j & k\\
+    \D{x}{} & \D{y}{} & \D{z}{}\\
+    F_x & F_y & F_z
+  \end{vmatrix}
+\eeqs
+Integration by parts
+\beqs \int u \mathrm{d} v = u v - \int v \mathrm{d} u \eeqs
+
+\subsection{Units \& Physical Constants}
+\beqs
+  1 \units{T} = 10 \units{kG} = 1 \units{\frac{kg}{A \cdot s^2}}
+  \qquad
+  \bar{h} c \equiv \frac{h c}{2 \pi} = 1974 \units{eV \r A}
+\eeqs
+\beqs
+  \epsilon_0 = 8.854 \E{-12} \units{\frac{A^2 \cdot s^4}{kg \cdot m^3}}
+  \qquad
+  \mu_0 = 4 \pi \E{-7} \units{\frac{kg \cdot m}{A^2 \cdot s^2}}
+\eeqs
+\beqs
+  c \equiv \frac{1}{\sqrt{\epsilon_0 \mu_0}} = 3 \E{8} \units{\frac{m}{s}}
+  \qquad
+  e^2 = 1.44 \units{MeV \cdot fm}
+\eeqs
+\beqs
+  \sigma = 5.67 \E{-8} \units{\frac{W}{m^2 \cdot K^4}}
+  \qquad
+  N_a = 6.022 \E{23} \units{\frac{\#}{mol}}
+\eeqs
+\beqs
+  11608 \units{\frac{K}{eV}}
+  \qquad
+  17.6 \units{\frac{MeV}{DT \cdot fusion}}
+  \qquad
+  1.602 \E{-19} \units{\frac{J}{eV}}
+\eeqs
+\beqs
+  1.66 \E{-27} \units{\frac{kg}{amu}}
+  \qquad
+  1836 \units{\frac{m_e}{m_p}}
+  \qquad
+  931.502 \units{\frac{MeV}{c^2 amu}}
+\eeqs
+\beqs
+  3.5 \units{\frac{\$}{Ci \cdot \tritium}}
+  \qquad
+  10 \units{\frac{kCi}{g \cdot \tritium}}
+  \qquad
+  4.18 \E{12} \units{\frac{J}{kT \cdot TNT}}
+\eeqs
+\beqs
+  t^{\tritium}_{1/2} = 12.3 \units{y}
+  \quad
+  3.7 \E{10} \units{\frac{Bq}{Ci}}
+  \quad
+  58 \units{\frac{R}{Ci}} \paren{10d, 70kg,\tritium}
+\eeqs
+
+\subsection{Electricity \& Magnetism}
+Maxwell's Equations \& Simple E and M
+\beqs
+  \curl{B} = \mu_0 \vec{J} + \frac{1}{c^2}\D{t}{\vec{E}}
+  \qqquad
+  \int \vec{B} \cdot \mathrm{d} \ell = \mu_0 \int \vec{J} \cdot \mathrm{d} s
+\eeqs
+\beqs
+  \vec{J} = \frac{\vec{B} \cross \grad \vec{P}}{B^2}
+  \qqqquad
+  \curl{E} = -\D{t}{\vec{B}}
+\eeqs
+\beqs
+  V = I R
+  \qqqquad
+  P = I V = I^2 R = \frac{V^2}{R}
+\eeqs
+Forces
+\beqs
+  \vec{F} = q \vec{v} \cross \vec{B} = \vec{J} \cross \vec{B} = \grad P
+  \quad
+  v_{drift} = \frac{\vec{F} \cross \vec{B}}{q B^2}
+  \quad
+  \vec{F} = q \vec{E}
+\eeqs
+Waves
+\beqs
+  \omega = 2 \pi f
+  \qqqquad
+  c = f \lambda
+  \qqqquad
+  E_{photon} = h f = \frac{h c}{\lambda}
+\eeqs
+
+\subsection{Ionization}
+\beqs
+  U = \frac{z_1 z_2 e^2}{r} = 13.6 \cdot Z^2 \units{eV}
+  \rightarrow \mbox{ Fully stripped } (E_{ion} < 3 T_e)
+\eeqs
+
+\subsection{Magnetic Confinement Fusion}
+Toroid geometry
+\beqs
+  R_0 \equiv \mbox{Major radius}
+  \quad
+  2 a \equiv \mbox{D width}
+  \quad
+  2 b \equiv \mbox{D height}
+\eeqs
+\beqs
+  A \equiv \frac{R_0}{a}
+  \quad
+  \mathcal{S}_{ellipse} = \paren{ \pi a b } = \frac{\pi R^2_0 \epsilon}{A^2}
+\eeqs
+\beqs
+  \epsilon \equiv \frac{b}{a}
+  \quad
+  \mathcal{V}_{toroid} = \paren{ 2 \pi \bar{R} \mathcal{S}_{ellipse} } = \frac{2 \pi^2 R^3_0 \epsilon}{A^2}
+\eeqs
+Safety Factor \& Plasma Beta
+\beqs
+  q \paren{r} \equiv \frac{r}{R} \frac{B_\phi}{B_\theta}
+  \qquad
+  \beta_{pol} \equiv \frac{2 \mu_0 P_{kinetic}}{B_{pol}}
+  \qquad
+  \beta_{tor} \equiv \frac{\beta_{pol}}{q^2 A^2}
+\eeqs
+Bennett Z-Pinch (straight B-fields)
+\beqs
+  p_{kin} + \frac{B^2}{2 \mu_0} = const
+  \qquad
+  \beta \equiv \frac{p_{kin}}{p_{mag}}
+  \qquad
+  0 \leq \beta \leq 1
+\eeqs
+
+\subsection{Particles}
+Maxwell-Boltzmann distributions
+\beqs
+  \left< v_\alpha \right> = \sqrt{\frac{8}{\pi}\frac{T_\alpha}{m_\alpha}}
+  \qquad
+  v_{\alpha rms} = \sqrt{\frac{3 T_\alpha}{m_\alpha}}
+  \qquad
+  \paren{ \frac{v_\alpha}{c} }^2 = \frac{T_\alpha}{m_\alpha c^2}
+\eeqs
+Kinetic pressure
+\beqs
+  p = n_e T_e + \sum n_z T_z
+  \rightarrow 2 n T (n_e = n_i \& T_e = T_i)
+  \quad
+  n_e = \sum n_z Z
+\eeqs
+
+\subsection{Fusion Power}
+Fusion reaction rate
+\beqs
+  RR_{ab} = \frac{n_a n_b}{1 + \delta_{ab}} \left< \sigma v \right>
+  \rightarrow \frac{n^2}{4} \left< \sigma v \right> (50/50)
+\eeqs
+Plant Efficiency
+\beqs \eta_0 = \eta_{th} \paren{ 1 + \frac{1}{Q} } - \frac{1}{Q \eta_{inj}} \eeqs
+
+\subsection{Confinement}
+\beqs n \tau = \frac{12 T}{ \left< \sigma v \right> (f_\alpha (1 - \chi_R) + \frac{1}{Q}) E_{fusion}} \eeqs
+\beqs \chi_R = \frac{P_{rad}}{P_\alpha} = 0.055 \sqrt{\frac{T}{15 \units{keV}}} Z_{eff} \eeqs
+\beqs
+  f_{\alpha} = \frac{P_\alpha}{P_{fusion}} = \frac{1}{5}
+  \qqqquad
+  Z_{eff} = \frac{\sum_i{n_i Z^2_i}}{n_e}
+\eeqs
+
+\subsection{Transport Coefficients}
+Timesteps \& Coulomb logarithms
+\beqs
+  n \tau_e = 3.44 \E{5} \frac{T^{3/2}_{e,eV}}{\log{\Lambda_e}} \units{\frac{s}{cm^3}}
+  \qquad
+  \log{\Lambda_e} = 17.5
+\eeqs
+\beqs
+  n \tau_i = 2.09 \E{7} \frac{T^{3/2}_{i,eV}}{\log{\Lambda_i}} \frac{m}{m_p}^{1/2} \units{\frac{s}{cm^3}}
+  \qquad
+  \log{\Lambda_i} = 15
+\eeqs
+Electrical Conductivities \& Inter-species heating
+\beqs
+  \sigma_\perp = n e^2 \frac{\tau_e}{m_{ei}}
+  \quad
+  \sigma_\parallel = 1.96 \sigma_\perp
+  \quad
+  \dot{q}^{\prime\prime\prime}_{e\rightarrow i} = 3 \paren{\frac{m_e}{m_i}} \frac{\paren{T_e - T_i}n_i}{\tau_e}
+\eeqs
+Dimensionless collisionality \& Neoclassical heating
+\beqs
+  \nu^{*}_i = \frac{q R}{v^{2D}_{th,i} \tau_i}
+  \qquad
+  \dot{q}^{\prime\prime}_{neo} = \dot{q}^{\prime\prime}_{class} \times X
+\eeqs
+\beqs
+  X = \left(
+    \begin{array}{lr}
+      2 q^2 A^{3/2} & : \nu^{*} < A^{-3/2} \mbox{ (banana)}\\
+      1 & : A^{-3/2} < \nu^{*} < 1.0 \mbox{ (plateau)}\\
+      2 q^2 & : 1.0 < \nu^{*} \mbox{ (Pfirsch-Schl\"uter)}
+    \end{array}
+  \right.
+\eeqs
+
+\subsection{Thermal Conduction}
+\beqs
+  \hat{\kappa}^e = n \tau_e \paren{\frac{T_e}{m_e}}
+  \quad
+  \kappa^e_\parallel = 3.2 \hat{\kappa}^e
+  \quad
+  \kappa^e_\perp = \frac{4.7\hat{\kappa}^e}{\paren{\omega_{ce} \tau_e}^2}
+  \quad
+  \kappa^e_\wedge = \frac{2.5\hat{\kappa}^e}{\paren{\omega_{ce} \tau_e}}
+\eeqs
+\beqs
+  \hat{\kappa}^i = n \tau_i \paren{\frac{T_i}{m_i}}
+  \quad
+  \kappa^i_\parallel = 3.9 \hat{\kappa}^i
+  \quad
+  \kappa^i_\perp = \frac{2.0\hat{\kappa}^i}{\paren{\omega_{ci} \tau_i}^2}
+  \quad
+  \kappa^i_\wedge = \frac{2.5\hat{\kappa}^i}{\paren{\omega_{ci} \tau_i}}
+\eeqs
+\beqs
+  \frac{\kappa^e_\parallel}{\kappa^i_\parallel} \sim 60
+  \quad
+  \frac{\kappa^e_\perp}{\kappa^i_\perp} \sim \frac{1}{60}
+  \rightarrow \frac{4.7 m_e \tau_e}{2 m_i \tau_i} (n_e = n_i \& T_e = T_i)
+\eeqs
+\beqs
+  \dot{q}^{\prime\prime} \equiv - \kappa \grad{T}
+  \qquad
+  \dot{q}^e_{th} = \dot{q}^e_\parallel + \dot{q}^e_\perp + \dot{q}^e_\wedge
+  \qquad
+  \dot{q}^i_{th} = \dot{q}^i_\parallel + \dot{q}^i_\perp - \dot{q}^i_\wedge
+\eeqs
+
+\subsection{Engineering Equations}
+\beqs P_{fusion} = 1.86 \cdot n^2_{20} \units{\frac{MW}{m^3}} \; (DT @ 15 keV)\eeqs
+\beqs
+  f_{pe} = 89 \cdot \sqrt{n_{20}} \units{GHz}
+  \qquad
+  f_{ce} = 2.8 \cdot B_{kG} [GHz]
+\eeqs
+\beqs
+  \left< \sigma v \right> =  2.71 \E{-22} \units{\frac{m^3}{s}}\; (DT @ 15 keV)
+\eeqs
+\beqs
+  \eta_\parallel = \frac{1}{\sigma_\parallel} = 2.8 \E{-8} Z_{eff} T^{-3/2}_{keV} \units{\Omega \cdot m}
+\eeqs
+\beqs
+  P_{brem} = 5.35 \E{-37} T^{1/2}_{keV} Z_{eff} n_e n_i Vol \units{W}
+\eeqs
+
+\subsection{Plasma Parameters}
+Gyrofrequency \& thermal velocity \& Debye length
+\beqs
+  \omega_{c \alpha} = \frac{q B}{m_\alpha}
+  \qquad
+  v^{XD}_{th} = \sqrt{\frac{X k T}{2 m}}
+  \qquad
+  \lambda_D = \frac{v^{1D}_{th}}{\omega_{pe}} =\sqrt{\frac{\epsilon_0 k T}{n_\alpha e^2}}
+\eeqs
+Gyroradius \& Alfven speed
+\beqs
+  \rho_e = \frac{v^{2D}_{th}}{\omega_{ce}}
+  \qquad
+  v_A = \frac{B}{\sqrt{\mu_0 \rho}}
+\eeqs
+Plasma frequency \& plasma dispersion \& Phase velocity
+\beqs
+  \omega^2_{pe} = \frac{n_e e^2}{\epsilon_0 m_e}
+  \qquad
+  \omega^2 = \omega^2_{pe} k^2 c^2
+  \qquad
+  v_{\phi} = \frac{\omega}{k}
+\eeqs
+
+\subsection{Impurities in Plasmas}
+\beqs
+  P_{brem} \sim n_e \sum n_z Z^2
+  \quad
+  \frac{P_{dirt}}{P_{clean}} = \paren{ 1 + f Z } \paren{ 1 + f Z^2 }
+\eeqs
+\beqs
+  p \sim \sum n_i T_i
+  \quad
+  \frac{p_{dirt}}{p_{clean}} = \paren{ 1 - f Z }^2
+\eeqs
+\beqs
+  P_{fusion} \sim n^2_{DT}
+  \quad
+  \frac{P_{dirt}}{P_{clean}} = \frac{1}{\paren{ 1 + f Z }^2}
+\eeqs
+
+\subsection{Inertial Confinement Fusion}
+\beqs
+  Yield = f_B \mathcal{Y} \mathcal{M}
+  \quad
+  \mathcal{Y} = 3.39 \E{11} \units{\frac{J}{g}}
+  \quad
+  f_B = \frac{\rho R}{6 + \rho R}
+\eeqs
+\beqs
+  \mathcal{M} = \frac{ \frac{4}{3} \pi \paren{\rho R}^3 }{\rho^2}
+  \qquad
+  c_S = \sqrt{\frac{\gamma p}{\rho}}
+  \qquad
+  \gamma = \frac{5}{3}
+\eeqs
+
+\subsection{Fusion Technology}
+\beqs
+  \frac{\mathcal{U}_{TH}}{\tau_{E}} = P_{f\alpha} + P_{inj} - P_{rad}
+  \quad
+  NI = 5RB
+\eeqs
+\beqs
+  q^\prime_{ohmic} = \frac{I^2 \rho_{stabilizer}}{A_{stabilizer}}
+  \quad
+  \dot{q}^{\prime\prime}_{ohmic} \le \dot{q}^{\prime\prime}_{CHF}
+\eeqs
+
+\rule{0.3\linewidth}{0.25pt}
+\scriptsize
+
+Copyright \copyright\ 2008 Jeffrey Seifried\\
+jeffseif@berkeley.edu
+
+\end{multicols}
+\end{document}
+
